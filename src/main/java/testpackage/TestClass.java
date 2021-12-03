@@ -2,7 +2,8 @@ package testpackage;
 
 import java.security.MessageDigest;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
@@ -10,50 +11,49 @@ import java.util.List;
 public class TestClass {
 
 	public static void main(String[] args) throws Throwable {
-		String[] stringArray = new String[] {"1", "2"};
-		
-		for(String children : stringArray) {
-			System.out.println(children);
-		}
-		
-		System.out.println();
-		
-		List<String> stringList = Arrays.asList(stringArray);
-		
-		for(String children : stringList) {
-			System.out.println(children);
-		}
-		
-		System.out.println();
-		
-		String[] secondStringArray = stringList.toArray(new String[stringList.size()]);
-		
-		for(String children : secondStringArray) {
-			System.out.println(children);
-		}
-		
-		StringBuffer sb = new StringBuffer();
-		
-		sb.append(stringList);
-		
-		System.out.println(sb.toString());
-		
+//		String[] stringArray = new String[] {"1", "2"};
+//		
+//		for(String children : stringArray) {
+//			System.out.println(children);
+//		}
+//		
+//		System.out.println();
+//		
+//		List<String> stringList = Arrays.asList(stringArray);
+//		
+//		for(String children : stringList) {
+//			System.out.println(children);
+//		}
+//		
+//		System.out.println();
+//		
+//		String[] secondStringArray = stringList.toArray(new String[stringList.size()]);
+//		
+//		for(String children : secondStringArray) {
+//			System.out.println(children);
+//		}
+//		
+//		StringBuffer sb = new StringBuffer();
+//		
+//		sb.append(stringList);
+//		
+//		System.out.println(sb.toString());
+//		
 //		System.out.println(new Date().toLocaleString());
 //		System.out.println("블레이드  소울2".split(" ").length);
 		
-		// 데이터 암호화 (중복 방지) 
-//		StringBuffer hashingDataString = new StringBuffer();
-//		hashingDataString.append(temp.get("product_name").toString());
-//		if(temp.get("pr_code") != null) {
-//			hashingDataString.append(temp.get("pr_code").toString());
-//		}
-//		hashingDataString.append(temp.get("category_code").toString());
-//		hashingDataString.append(temp.get("key_path").toString());
-//		hashingDataString.append(temp.get("value").toString());
-		
 		System.out.println(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date(System.currentTimeMillis() - 86400000)));
-		System.out.println(LocalDate.now());
+		System.out.println(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
 		
+		System.out.println(String.format("%s 번째 파일에 다음과 같은 오류가 있습니다.\n%s", 1, "정말 우려스러운 상황이군요."));
+		
+		System.out.println("12345".charAt(2));
+		
+		System.out.println("역시 중은 모닝.근데 씬님 썬크림은 안 바르시나요 그리고 목에 파데 바르면 옷에 안 묻어요 이리저리 돌리면 묻을 것 같은데.".replace(".", " "));
+		
+		List<String> tempList = Arrays.asList("1", "2", "3", "4");
+		
+		System.out.println(tempList.subList(1, tempList.size()));
 	}
 	
 	public static String hashing(String data) {
