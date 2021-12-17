@@ -1,12 +1,8 @@
 package testpackage;
 
-import java.nio.charset.Charset;
-import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.security.MessageDigest;
-import java.util.List;
 import java.util.regex.Pattern;
-import java.util.stream.Collectors;
 
 public class TestClass {
 
@@ -115,59 +111,9 @@ public class TestClass {
 //		System.out.println("".split(" ").length);
 		
 		System.out.println(Pattern.matches("", "'30년'도 되지 않았지만 인터넷의 개발과 보급은 우리의 삶을 엄청나게 바꾸어 놓았습니다."));
-		System.out.println("'30년'도 되지 않았지만 인터넷의 개발과 보급은 우리의 삶을 엄청나게 바꾸어 놓았습니다.".replaceAll("'", ""));
+		System.out.println("1:19:57 다시봐도 너무 웃겨욬 뜯자마자 도도 달려 들어오는겈".replaceAll("([0-9]{1,2}:)?[0-9]{1,2}:[0-9]{1,2}", ""));
 		
-//		try {
-//			List<Path> filterPathList = new ArrayList<>();
-//			
-//			List<Path> filterDirectoryList = Files.list(Paths.get("C:\\Users\\KHS\\Downloads\\tmp")).collect(Collectors.toList());
-//			
-//			for(Path filterDirectoryPath : filterDirectoryList) {
-//				if(Files.isDirectory(filterDirectoryPath)) {
-//					List<Path> filterFileList = Files.list(filterDirectoryPath).collect(Collectors.toList());
-//					
-//					for(Path filterFilePath : filterFileList) {
-//						if(filterFilePath.toString().endsWith("csv")) {
-//							filterPathList.add(filterFilePath);
-//						}
-//					}
-//				}
-//			}
-//			
-//			System.out.println("load done.");
-//			
-//			filterPathList.forEach(filterPath -> {
-//				try {
-//					StringBuilder sb = new StringBuilder();
-//					
-//					Files.lines(filterPath)
-//						.filter(line -> line.replace(",", "").length() > 0)
-//						.flatMap(line -> Arrays.asList(line.split(",")[3].split("\\|")).stream())
-//						.distinct()
-//						.filter(condition -> condition.startsWith("비속어"))
-//						.map(condition -> condition.substring(condition.indexOf("'") + 1, condition.lastIndexOf("'")))
-//						.forEach(condition -> sb.append(condition + "\n"));
-//					
-//					FileUtil.writeFile("C:\\Users\\KHS\\Downloads\\tmp", "conditions.txt", sb.toString());
-//				} catch(Exception e) {
-//					e.printStackTrace();
-//				}
-//			});
-//			
-//			System.out.println("write file done.");
-//			
-//			Files.lines(Paths.get("C:\\Users\\KHS\\Downloads\\tmp\\conditions.txt")).distinct().sorted().forEach(System.out::println);
-//		} catch(Exception e) {
-//			e.printStackTrace();
-//		}
-		
-//		List<String> filterVOList = 
-//				Files.lines(Paths.get("D:\\dev\\workspace\\nia-duplecheck\\target\\classes\\filter\\BOHB_2021-12-11_16_file.csv"), Charset.forName("UTF-8"))
-//				.filter(line -> !StringUtil.isNullOrEmpty(line.replace(",", "")))
-//				.map(line -> line.split(",")[0])
-//				.collect(Collectors.toList());
-		
-//		System.out.println(Paths.get("C:\\Users\\KHS\\Downloads\\tmp").getFileName());
+		System.out.println(Paths.get("C:\\Users\\KHS\\Downloads\\tmp").getFileName());
 		
 		System.out.println(String.format("%,d", 1234567890));
 		
