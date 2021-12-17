@@ -76,7 +76,7 @@ public class FileUtil {
 		
 		if(Files.isWritable(dirPath)) {
 			try {
-				Files.write(fullPath, inputString.getBytes(), StandardOpenOption.CREATE);
+				Files.write(fullPath, inputString.getBytes(), StandardOpenOption.APPEND);
 			} catch (Exception e) {
 				log.error(e.getMessage(), e);
 			} finally {

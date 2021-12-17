@@ -1,15 +1,12 @@
 package testpackage;
 
+import java.nio.charset.Charset;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.security.MessageDigest;
-import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.Date;
 import java.util.List;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 public class TestClass {
 
@@ -48,8 +45,9 @@ public class TestClass {
 		
 //		System.out.println(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date(System.currentTimeMillis() - 86400000)));
 //		System.out.println(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
-//		
-//		System.out.println(String.format("%s 번째 파일에 다음과 같은 오류가 있습니다.\n%s", 1, "정말 우려스러운 상황이군요."));
+//		System.out.println(LocalDateTime.now());
+		
+//		System.out.println(String.format("%s 번째 파일에 다음과 같은 오류가 있습니다.\n%s\n%.03f", 1, "정말 우려스러운 상황이군요.", 12323.123));
 //		
 //		System.out.println("12345".charAt(2));
 //		
@@ -63,10 +61,117 @@ public class TestClass {
 //		
 //		System.out.println(Pattern.matches(".*(\\d|[a-zA-Z]){15,}.*", "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"));
 		
-		List<String> tempList = Arrays.asList("가나다라", "가", "가나", "가나다");
+//		List<String> tempList = Arrays.asList("가나다라", "가", "가나", "가나다");
 		
 //		System.out.println(tempList);
 //		System.out.println(tempList.sort(Comparator.reverseOrder()));
+		
+//		System.out.println(600.0 / 1 >= 600);
+		
+//		System.out.println("\\u00001234".replaceAll("\\\\u\\d{4}", ""));
+		
+//		String temp = "비속어 re.compile('이기야') 치환";
+//		
+//		System.out.println(temp.substring(temp.indexOf("'") + 1, temp.lastIndexOf("'")));
+		
+//		System.out.println("10:50".replaceAll("([0-9-]+:[0-9-]+)", "A"));
+		
+//		try {
+//			List<String> fileList = Files.lines(Paths.get("/data_bak2/load_tmp/inno.txt"))
+//										.collect(Collectors.toList());
+//			
+//			List<Path> depth1PathList = Files.list(Paths.get("/data_bak2/part2_review_02_name_mask"))
+//											.filter(path -> Files.isDirectory(path))
+//											.collect(Collectors.toList());
+//			
+//			List<String> movedList = Files.list(Paths.get("/data_bak2/load_tmp/inno"))
+//										.map(path -> path.getFileName().toString())
+//										.collect(Collectors.toList());
+//			
+//			for(Path depth1Path : depth1PathList) {
+//				List<Path> depth2PathList = Files.list(depth1Path)
+//												.filter(path -> fileList.contains(path.getFileName().toString())
+//																&& !movedList.contains(path.getFileName().toString()))
+//												.collect(Collectors.toList());
+//				
+//				System.out.println("Target files - " + depth2PathList.size());
+//				
+//				for(Path depth2Path : depth2PathList) {
+//					try {
+//						Files.copy(depth2Path
+//								, Paths.get("/data_bak2/load_tmp/inno" + File.separator + depth2Path.getFileName().toString())
+//								, StandardCopyOption.REPLACE_EXISTING);
+//					} catch(Exception e) {
+//						e.printStackTrace();
+//					}
+//				}
+//			}
+//			
+//			System.out.println("done.");
+//		} catch(Exception e) {
+//			e.printStackTrace();
+//		}
+		
+//		System.out.println("".split(" ").length);
+		
+		System.out.println(Pattern.matches("", "'30년'도 되지 않았지만 인터넷의 개발과 보급은 우리의 삶을 엄청나게 바꾸어 놓았습니다."));
+		System.out.println("'30년'도 되지 않았지만 인터넷의 개발과 보급은 우리의 삶을 엄청나게 바꾸어 놓았습니다.".replaceAll("'", ""));
+		
+//		try {
+//			List<Path> filterPathList = new ArrayList<>();
+//			
+//			List<Path> filterDirectoryList = Files.list(Paths.get("C:\\Users\\KHS\\Downloads\\tmp")).collect(Collectors.toList());
+//			
+//			for(Path filterDirectoryPath : filterDirectoryList) {
+//				if(Files.isDirectory(filterDirectoryPath)) {
+//					List<Path> filterFileList = Files.list(filterDirectoryPath).collect(Collectors.toList());
+//					
+//					for(Path filterFilePath : filterFileList) {
+//						if(filterFilePath.toString().endsWith("csv")) {
+//							filterPathList.add(filterFilePath);
+//						}
+//					}
+//				}
+//			}
+//			
+//			System.out.println("load done.");
+//			
+//			filterPathList.forEach(filterPath -> {
+//				try {
+//					StringBuilder sb = new StringBuilder();
+//					
+//					Files.lines(filterPath)
+//						.filter(line -> line.replace(",", "").length() > 0)
+//						.flatMap(line -> Arrays.asList(line.split(",")[3].split("\\|")).stream())
+//						.distinct()
+//						.filter(condition -> condition.startsWith("비속어"))
+//						.map(condition -> condition.substring(condition.indexOf("'") + 1, condition.lastIndexOf("'")))
+//						.forEach(condition -> sb.append(condition + "\n"));
+//					
+//					FileUtil.writeFile("C:\\Users\\KHS\\Downloads\\tmp", "conditions.txt", sb.toString());
+//				} catch(Exception e) {
+//					e.printStackTrace();
+//				}
+//			});
+//			
+//			System.out.println("write file done.");
+//			
+//			Files.lines(Paths.get("C:\\Users\\KHS\\Downloads\\tmp\\conditions.txt")).distinct().sorted().forEach(System.out::println);
+//		} catch(Exception e) {
+//			e.printStackTrace();
+//		}
+		
+//		List<String> filterVOList = 
+//				Files.lines(Paths.get("D:\\dev\\workspace\\nia-duplecheck\\target\\classes\\filter\\BOHB_2021-12-11_16_file.csv"), Charset.forName("UTF-8"))
+//				.filter(line -> !StringUtil.isNullOrEmpty(line.replace(",", "")))
+//				.map(line -> line.split(",")[0])
+//				.collect(Collectors.toList());
+		
+//		System.out.println(Paths.get("C:\\Users\\KHS\\Downloads\\tmp").getFileName());
+		
+		System.out.println(String.format("%,d", 1234567890));
+		
+		System.out.println("done.");
 	}
 	
 	public static String hashing(String data) {
