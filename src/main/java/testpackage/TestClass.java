@@ -2,6 +2,9 @@ package testpackage;
 
 import java.nio.file.Paths;
 import java.security.MessageDigest;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ThreadPoolExecutor;
 import java.util.regex.Pattern;
 
 public class TestClass {
@@ -110,6 +113,7 @@ public class TestClass {
 		
 //		System.out.println("".split(" ").length);
 		
+		System.out.println(Pattern.matches("(19|20)[0-9]{2}-[0-1][0-9]-[0-3][0-9]", "2020-08-25"));
 		System.out.println(Pattern.matches("", "'30년'도 되지 않았지만 인터넷의 개발과 보급은 우리의 삶을 엄청나게 바꾸어 놓았습니다."));
 		System.out.println("1:19:57 다시봐도 너무 웃겨욬 뜯자마자 도도 달려 들어오는겈".replaceAll("([0-9]{1,2}:)?[0-9]{1,2}:[0-9]{1,2}", ""));
 		
