@@ -113,13 +113,14 @@ public class TestClass {
 		
 //		System.out.println("".split(" ").length);
 		
-		System.out.println(Pattern.matches("(19|20)[0-9]{2}-[0-1][0-9]-[0-3][0-9]", "2020-08-25"));
-		System.out.println(Pattern.matches("", "'30년'도 되지 않았지만 인터넷의 개발과 보급은 우리의 삶을 엄청나게 바꾸어 놓았습니다."));
-		System.out.println("1:19:57 다시봐도 너무 웃겨욬 뜯자마자 도도 달려 들어오는겈".replaceAll("([0-9]{1,2}:)?[0-9]{1,2}:[0-9]{1,2}", ""));
+//		System.out.println(Pattern.matches("(19|20)[0-9]{2}(-|/|\\.)?[0-1][0-9](-|/|\\.)?[0-3][0-9]", "2020.08.25"));
+//		System.out.println("문화는 文化".replaceAll("[^\\(\\),\\.\\w\\s가-힣]+", ""));
+//		System.out.println(Pattern.matches("", "'30년'도 되지 않았지만 인터넷의 개발과 보급은 우리의 삶을 엄청나게 바꾸어 놓았습니다."));
+//		System.out.println("1:19:57 다시봐도 너무 웃겨욬 뜯자마자 도도 달려 들어오는겈".replaceAll("([0-9]{1,2}:)?[0-9]{1,2}:[0-9]{1,2}", ""));
 		
-		System.out.println(Paths.get("C:\\Users\\KHS\\Downloads\\tmp").getFileName());
-		
-		System.out.println(String.format("%,d", 1234567890));
+//		System.out.println(Paths.get("C:\\Users\\KHS\\Downloads\\tmp").getFileName());
+//		
+//		System.out.println(String.format("%,.03f", 1234567890.123456));
 		
 		System.out.println("done.");
 	}
