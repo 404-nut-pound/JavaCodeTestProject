@@ -1,8 +1,14 @@
 package testpackage;
 
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.stream.Stream;
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 public class StreamTest {
 
@@ -119,58 +125,47 @@ public class StreamTest {
 //			e.printStackTrace();
 //		}
 		
-//		try {
-//			Map<String, Integer> regexpMap = new ConcurrentHashMap<>();
-//			
-//			List<Path> depth1PathList = Files.list(Paths.get("."))
-//					.filter(path -> Files.isDirectory(path))
-//					.collect(Collectors.toList());
-//			
-//			for(Path depth1Path : depth1PathList) {
-//				System.out.println(depth1Path.toAbsolutePath().toString());
-//				Files.list(depth1Path)
-//				.filter(path -> path.getFileName().toString().endsWith("json"))
-////				.parallel()
-//				.forEach(path -> {
-//					try {
-//						String fileContent = FileUtil.readFile(path.getParent().toString(), path.getFileName().toString(), "UTF-8");
-//						
-//						if(!StringUtil.isNullOrEmpty(fileContent)) {
-////							Matcher matcher = Pattern.compile("&(#[0-9]+|[a-zA-Z]+);").matcher(fileContent);
-//							Matcher matcher = Pattern.compile("<(\\/|!--)?[a-zA-Z][^>가-힣]*>").matcher(fileContent);
-//							
-//							while(matcher.find()) {
-//								String matchedStr = matcher.group().split(" ")[0];
-//								
-//								Integer matchedCnt = (regexpMap.get(matchedStr) == null ? 0 : regexpMap.get(matchedStr));
-//								
-//								regexpMap.put(matchedStr, ++matchedCnt);
-//							}
-//						}
-//					} catch(Exception e) {
-//						e.printStackTrace();
-//					}
-//				});
-//			}
-//			
-//			StringBuilder sb = new StringBuilder();
-//			
-//			regexpMap.forEach((k, v) -> sb.append(k + "\t" + v + "\n"));
-//			
-////			System.out.println(sb.toString());
-////			FileUtil.writeFile(".", "amp_list.txt", sb.toString());
-//			FileUtil.writeFile(".", "tag_list.txt", sb.toString());
-//		} catch(Exception e) {
-//			e.printStackTrace();
-//		}
-		
 		try {
-			Stream<String> lines = Files.lines(Paths.get("C:\\Users\\KHS\\Downloads\\tmp\\amp_list.txt"));
+			Map<String, Integer> regexpMap = new ConcurrentHashMap<>();
 			
-			lines.forEach(line -> {
-				
-				
-			});
+			List<Path> depth1PathList = Files.list(Paths.get("."))
+					.filter(path -> Files.isDirectory(path))
+					.collect(Collectors.toList());
+			
+			for(Path depth1Path : depth1PathList) {
+				System.out.println(depth1Path.toAbsolutePath().toString());
+				Files.list(depth1Path)
+				.filter(path -> path.getFileName().toString().endsWith("json"))
+//				.parallel()
+				.forEach(path -> {
+					try {
+						String fileContent = FileUtil.readFile(path.getParent().toString(), path.getFileName().toString(), "UTF-8");
+						
+						if(!StringUtil.isNullOrEmpty(fileContent)) {
+							Matcher matcher = Pattern.compile("&#?\\w+;").matcher(fileContent);
+//							Matcher matcher = Pattern.compile("<(\\/|!--)?[a-zA-Z][^>가-힣]*>").matcher(fileContent);
+							
+							while(matcher.find()) {
+								String matchedStr = matcher.group().split(" ")[0];
+								
+								Integer matchedCnt = (regexpMap.get(matchedStr) == null ? 0 : regexpMap.get(matchedStr));
+								
+								regexpMap.put(matchedStr, ++matchedCnt);
+							}
+						}
+					} catch(Exception e) {
+						e.printStackTrace();
+					}
+				});
+			}
+			
+			StringBuilder sb = new StringBuilder();
+			
+			regexpMap.forEach((k, v) -> sb.append(k + "\t" + v + "\n"));
+			
+//			System.out.println(sb.toString());
+			FileUtil.writeFile(".", "amp_list.txt", sb.toString());
+//			FileUtil.writeFile(".", "tag_list.txt", sb.toString());
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
