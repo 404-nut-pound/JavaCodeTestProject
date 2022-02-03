@@ -10,6 +10,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
+import java.util.zip.CRC32;
 
 public class TestClass {
 
@@ -137,6 +138,11 @@ public class TestClass {
 //				);
 		
 //		System.out.println("!--nowsence[mt_201402211554275726722]--".replaceAll("!\\-\\-nowsence\\[mt_201402211554275726722\\]\\-\\-", "!@#"));
+		
+		CRC32 crc32 = new CRC32();
+		crc32.update("asdf".getBytes());
+		
+		System.out.println(crc32.getValue());
 		
 		System.out.println("done.");
 	}
