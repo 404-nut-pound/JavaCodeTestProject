@@ -1,16 +1,8 @@
 package testpackage;
 
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.security.MessageDigest;
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import java.util.stream.Collectors;
-import java.util.zip.CRC32;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class TestClass {
 
@@ -139,10 +131,18 @@ public class TestClass {
 		
 //		System.out.println("!--nowsence[mt_201402211554275726722]--".replaceAll("!\\-\\-nowsence\\[mt_201402211554275726722\\]\\-\\-", "!@#"));
 		
-		CRC32 crc32 = new CRC32();
-		crc32.update("asdf".getBytes());
+//		CRC32 crc32 = new CRC32();
+//		crc32.update("asdf".getBytes());
+//		
+//		System.out.println(crc32.getValue());
 		
-		System.out.println(crc32.getValue());
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSSSSXXX");
+		
+		System.out.println(sdf.format(new Date()));
+		
+		String dateStr = "2022-02-11T10:35:43.845943+09:00";
+		
+		System.out.println(sdf.parse(dateStr));
 		
 		System.out.println("done.");
 	}
